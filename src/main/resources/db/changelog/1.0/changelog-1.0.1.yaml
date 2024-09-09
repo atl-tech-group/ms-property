@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create attribute table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: attribute
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: attribute_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: attribute_category(id)
+                    foreignKeyName: fk_attribute_to_attribute_category
+
+            remarks: Table to store information about attribute

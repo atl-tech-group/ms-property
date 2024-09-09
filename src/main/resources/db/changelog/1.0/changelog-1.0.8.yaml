@@ -1,0 +1,88 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create properties table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: property
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nightly_price
+                  type: decimal
+                  constraints:
+                    nullable: false
+              - column:
+                  name: property_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: num_guests
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: num_beds
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: num_bedrooms
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: num_bathrooms
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_guest_favourite
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(2000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_line_1
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_line_2
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: location_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: location(id)
+                    foreignKeyName: fk_property_to_location
+              - column:
+                  name: place_type_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: place_type(id)
+                    foreignKeyName: fk_property_to_place_type
+              - column:
+                  name: property_type_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: property_type(id)
+                    foreignKeyName: fk_property_to_property_type
+
+            remarks: Table to store information about properties

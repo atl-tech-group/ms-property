@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create property category table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: property_category
+            columns:
+              - column:
+                  name: property_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: property(id)
+                    foreignKeyName: fk_product_category_to_property
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: category(id)
+                    foreignKeyName: fk_product_category_to_category
+
+            remarks: Table to store information about relation between property and category

@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create attribute category table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: attribute_category
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: category_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+
+            remarks: Table to store information about attribute category

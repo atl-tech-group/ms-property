@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create property type
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: property_type
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: type_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+
+            remarks: Table to store information about property types

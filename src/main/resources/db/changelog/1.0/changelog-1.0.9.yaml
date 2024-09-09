@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create property attribute table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: property_attribute
+            columns:
+              - column:
+                  name: property_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: property(id)
+                    foreignKeyName: fk_property_attribute_to_property
+              - column:
+                  name: attribute_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: attribute(id)
+                    foreignKeyName: fk_property_attribute_to_attribute
+
+            remarks: Table to store information about relation between property and attribute
+

@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create country table
+      author: ELnur Hasanov
+      changes:
+        - createTable:
+            tableName: country
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: country_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: region_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: region(id)
+                    foreignKeyName: fk_country_to_region
+
+            remarks: Table to store information about countries

@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create location table
+      author: Elnur Hasanov
+      changes:
+        - createTable:
+            tableName: location
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: location_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    references: country(id)
+                    foreignKeyName: fk_location_to_country
+
+            remarks: Table to store information about locations
