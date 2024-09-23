@@ -19,9 +19,7 @@ public interface AttributeMapper {
     @Mapping(target = "attributeCategory.id", source = "attributeCategory")
     AttributeEntity buildAttributeEntity(SaveAttributeRequest request);
 
-    /**
-     * @Mapping is not working
-     */
-    @Mapping(target = "attributeCategory.id", source = "attributeCategory")
+    @Mapping(target = "attributeCategory",
+            expression = "java(AttributeCategoryEntity.builder().id(request.getAttributeCategory()).build())")
     void updateAttributeEntity(@MappingTarget AttributeEntity entity, UpdateAttributeRequest request);
 }

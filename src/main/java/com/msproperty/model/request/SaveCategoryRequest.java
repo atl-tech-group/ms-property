@@ -1,6 +1,6 @@
 package com.msproperty.model.request;
 
-import lombok.AccessLevel;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +13,7 @@ import static lombok.AccessLevel.PRIVATE;
 @AllArgsConstructor
 @FieldDefaults(level = PRIVATE)
 public class SaveCategoryRequest {
+
+    @NotBlank(message = "Category name is required")
     String categoryName;
 }
