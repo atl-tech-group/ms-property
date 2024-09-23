@@ -47,5 +47,6 @@ public class GlobalExceptionHandler {
                         .errors(errors)
                         .timestamp(LocalDateTime.now())
                         .build());
+
     }
 }
