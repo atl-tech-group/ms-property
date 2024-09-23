@@ -5,7 +5,7 @@ import com.msproperty.dao.repository.PropertyTypeRepository;
 import com.msproperty.model.request.SavePropertyTypeRequest;
 import com.msproperty.model.request.UpdatePropertyTypeRequest;
 import com.msproperty.model.response.PropertyTypeResponse;
-import com.msproperty.service.PropertyService;
+import com.msproperty.service.PropertyTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +13,10 @@ import static com.msproperty.mapper.PropertyTypeMapper.PROPERTY_TYPE_MAPPER;
 
 @Service
 @RequiredArgsConstructor
-public class PropertyTypeServiceImpl implements PropertyService {
+public class PropertyTypeServiceImpl implements PropertyTypeService {
+
     private final PropertyTypeRepository propertyTypeRepository;
+
     @Override
     public PropertyTypeResponse getPropertyTypeById(Long id) {
         var propertyType = fetchPropertyTypeEntityIfExist(id);

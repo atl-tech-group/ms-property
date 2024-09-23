@@ -1,13 +1,9 @@
 package com.msproperty.controller;
 
-import com.msproperty.model.request.SavePlaceTypeRequest;
 import com.msproperty.model.request.SavePropertyTypeRequest;
-import com.msproperty.model.request.UpdatePlaceTypeRequest;
 import com.msproperty.model.request.UpdatePropertyTypeRequest;
-import com.msproperty.model.response.PlaceTypeResponse;
 import com.msproperty.model.response.PropertyTypeResponse;
-import com.msproperty.service.PlaceTypeService;
-import com.msproperty.service.PropertyService;
+import com.msproperty.service.PropertyTypeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +15,8 @@ import static org.springframework.http.HttpStatus.*;
 @RequestMapping("api/v1/property-type")
 @RequiredArgsConstructor
 public class PropertyTypeController {
-    private final PropertyService propertyService;
+    private final PropertyTypeService propertyService;
+
     @GetMapping("/{id}")
     public ResponseEntity<PropertyTypeResponse> getLocationById(@PathVariable Long id) {
         return ResponseEntity.status(OK).body(propertyService.getPropertyTypeById(id));
