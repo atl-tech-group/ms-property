@@ -1,6 +1,5 @@
 package com.msproperty.mapper;
 
-import com.msproperty.dao.entity.CountryEntity;
 import com.msproperty.dao.entity.LocationEntity;
 import com.msproperty.model.request.SaveLocationRequest;
 import com.msproperty.model.request.UpdateLocationRequest;
@@ -20,14 +19,7 @@ public interface LocationMapper {
     @Mapping(target = "country.id", source = "country")
     LocationEntity buildCountryEntity(SaveLocationRequest request);
 
-    /**
-     * @Mapping is not working
-     */
-//    @Mapping(target = "country.id", source = "country")
-    @Mapping(target = "country", expression = "java(demo(request.getCountry()))")
+    @Mapping(target = "countryId", expression = "java(CountryEntity.builder().id(request.getCountry()).build())")
     void updateLocationEntity(@MappingTarget LocationEntity entity, UpdateLocationRequest request);
 
-    default CountryEntity demo(Long country) {
-        return CountryEntity.builder().id(country).build();
-    }
 }
