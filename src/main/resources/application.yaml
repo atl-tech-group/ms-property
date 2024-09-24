@@ -3,8 +3,8 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/ms-property
-    username: postgres
+    url: jdbc:postgresql://localhost:5432/propertydb
+    username: pass
     password: 1212
   # JPA properties
   jpa:
@@ -23,6 +23,7 @@ spring:
   # Liquibase
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yaml
+
 server:
   port: 9093
 
