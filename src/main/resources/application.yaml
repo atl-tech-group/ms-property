@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/ms-property
     username: postgres
-    password: 1212
+    password: admin
   # JPA properties
   jpa:
     show_sql: true
@@ -19,10 +19,9 @@ spring:
     hibernate:
       ddl-auto: validate
     open-in-view: true
-
-#  # Liquibase
-#  liquibase:
-#    change-log: classpath:db/changelog/changelog-master.yaml
+  # Liquibase
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yaml
 server:
   port: 0  # 8383
 
