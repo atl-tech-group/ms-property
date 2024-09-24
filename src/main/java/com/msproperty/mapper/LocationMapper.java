@@ -19,7 +19,7 @@ public interface LocationMapper {
     @Mapping(target = "country.id", source = "country")
     LocationEntity buildCountryEntity(SaveLocationRequest request);
 
-    @Mapping(target = "countryId", expression = "java(CountryEntity.builder().id(request.getCountry()).build())")
+    @Mapping(target = "country", expression = "java(CountryEntity.builder().id(request.getCountry()).build())")
     void updateLocationEntity(@MappingTarget LocationEntity entity, UpdateLocationRequest request);
 
 }
