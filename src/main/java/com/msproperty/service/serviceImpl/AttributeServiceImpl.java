@@ -8,7 +8,8 @@ import com.msproperty.model.response.AttributeResponse;
 import com.msproperty.service.AttributeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static com.msproperty.mapper.AttributeMapper.ATTRIBUTE_MAPPER;
 
@@ -21,6 +22,11 @@ public class AttributeServiceImpl implements AttributeService {
     public AttributeResponse getAttributeById(Long id) {
         var attributeCategory = fetchAttributeEntityIfExist(id);
         return ATTRIBUTE_MAPPER.buildAttributeResponse(attributeCategory);
+    }
+
+    @Override
+    public List<AttributeEntity> getAllAttributesByIds(List<Long> ids) {
+        return attributeRepository.findAllById(ids);
     }
 
     @Override

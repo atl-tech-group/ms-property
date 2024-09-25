@@ -1,12 +1,10 @@
 package com.msproperty.controller;
 
+import com.msproperty.model.request.SavePropertyRequest;
 import com.msproperty.model.response.PropertyResponse;
 import com.msproperty.service.serviceImpl.PropertyServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/property")
@@ -14,9 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class PropertyController {
     private final PropertyServiceImpl propertyService;
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public PropertyResponse getPropertyById(@PathVariable Long id) {
         return propertyService.getPropertyById(id);
     }
 
+    @PostMapping
+    public void saveProperty(@RequestBody SavePropertyRequest request) {
+        propertyService.saveProperty(request);
+    }
 }

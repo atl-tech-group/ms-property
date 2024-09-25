@@ -9,6 +9,8 @@ import com.msproperty.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.msproperty.mapper.CategoryMapper.CATEGORY_MAPPER;
 
 @Service
@@ -20,6 +22,11 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponse getCategoryById(Long id) {
         var attributeCategory = fetchCategoryEntityIfExist(id);
         return CATEGORY_MAPPER.buildCategoryResponse(attributeCategory);
+    }
+
+    @Override
+    public List<CategoryEntity> getAllCategoriesByIds(List<Long> ids) {
+        return categoryRepository.findAllById(ids);
     }
 
     @Override

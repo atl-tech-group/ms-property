@@ -14,6 +14,7 @@ import static lombok.AccessLevel.PRIVATE;
 @Getter
 @Setter
 @ToString
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = PRIVATE)

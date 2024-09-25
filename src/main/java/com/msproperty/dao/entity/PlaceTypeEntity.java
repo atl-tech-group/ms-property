@@ -13,6 +13,7 @@ import static lombok.AccessLevel.PRIVATE;
 @Entity
 @Getter
 @Setter
+@Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
