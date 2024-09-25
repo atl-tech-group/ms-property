@@ -11,5 +11,4 @@ public class MsPropertyApplication {
     public static void main(String[] args) {
         SpringApplication.run(MsPropertyApplication.class, args);
     }
-
 }
