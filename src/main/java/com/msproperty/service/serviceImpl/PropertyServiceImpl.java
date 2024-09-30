@@ -1,5 +1,6 @@
 package com.msproperty.service.serviceImpl;
 
+import com.msproperty.dao.entity.AttributeEntity;
 import com.msproperty.dao.repository.PropertyRepository;
 import com.msproperty.model.request.SavePropertyRequest;
 import com.msproperty.model.response.PropertyResponse;
@@ -10,6 +11,9 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.msproperty.mapper.PropertyMapper.PROPERTY_MAPPER;
 
@@ -24,9 +28,12 @@ public class PropertyServiceImpl implements PropertyService {
     public PropertyResponse getPropertyById(Long id) {
         var property = propertyRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Property not found By " + id + "id"));
-        return new PropertyResponse(
-                property.getId()
-        );
+
+        var propertyResponse = PROPERTY_MAPPER.buildPropertyResponse(property);
+        propertyResponse.setAttributes(property.getAttributes().stream().map(p -> p.getId()).toList());
+        propertyResponse.setCategories(property.getCategories().stream().map(c -> c.getId()).toList());
+
+        return propertyResponse;
     }
 
     @Override
