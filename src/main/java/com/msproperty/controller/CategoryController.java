@@ -1,10 +1,7 @@
 package com.msproperty.controller;
 
-import com.msproperty.model.request.SaveAttributeRequest;
 import com.msproperty.model.request.SaveCategoryRequest;
-import com.msproperty.model.request.UpdateAttributeRequest;
 import com.msproperty.model.request.UpdateCategoryRequest;
-import com.msproperty.model.response.AttributeResponse;
 import com.msproperty.model.response.CategoryResponse;
 import com.msproperty.service.CategoryService;
 import jakarta.validation.Valid;
@@ -15,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("api/v1/category")
+@RequestMapping("/api/v1/category")
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;

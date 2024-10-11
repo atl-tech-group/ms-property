@@ -6,12 +6,14 @@ import com.msproperty.model.request.SaveAttributeRequest;
 import com.msproperty.model.request.UpdateAttributeRequest;
 import com.msproperty.model.response.AttributeResponse;
 import com.msproperty.service.AttributeService;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static com.msproperty.mapper.AttributeMapper.ATTRIBUTE_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.ATTRIBUTE_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +46,7 @@ public class AttributeServiceImpl implements AttributeService {
 
     private AttributeEntity fetchAttributeEntityIfExist(Long id) {
         return attributeRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("ATTRIBUTE_NOT_FOUND")
+                () -> new NotFoundException(ATTRIBUTE_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

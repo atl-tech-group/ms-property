@@ -6,12 +6,14 @@ import com.msproperty.model.request.SaveCategoryRequest;
 import com.msproperty.model.request.UpdateCategoryRequest;
 import com.msproperty.model.response.CategoryResponse;
 import com.msproperty.service.CategoryService;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static com.msproperty.mapper.CategoryMapper.CATEGORY_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.CATEGORY_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +46,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     private CategoryEntity fetchCategoryEntityIfExist(Long id) {
         return categoryRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("ATTRIBUTE_NOT_FOUND")
+                () -> new NotFoundException(CATEGORY_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

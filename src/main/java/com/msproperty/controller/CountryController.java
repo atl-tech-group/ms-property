@@ -1,12 +1,8 @@
 package com.msproperty.controller;
 
-import com.msproperty.model.request.SaveCategoryRequest;
 import com.msproperty.model.request.SaveCountryRequest;
-import com.msproperty.model.request.UpdateCategoryRequest;
 import com.msproperty.model.request.UpdateCountryRequest;
-import com.msproperty.model.response.CategoryResponse;
 import com.msproperty.model.response.CountryResponse;
-import com.msproperty.service.CategoryService;
 import com.msproperty.service.CountryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("api/v1/country")
+@RequestMapping("/api/v1/country")
 @RequiredArgsConstructor
 public class CountryController {
     private final CountryService countryService;

@@ -1,7 +1,6 @@
 package com.msproperty.service;
 
 import com.msproperty.dao.entity.AttributeEntity;
-import com.msproperty.dao.entity.CategoryEntity;
 import com.msproperty.model.request.SaveAttributeRequest;
 import com.msproperty.model.request.UpdateAttributeRequest;
 import com.msproperty.model.response.AttributeResponse;
@@ -16,6 +15,4 @@ public interface AttributeService {
     void saveAttribute(SaveAttributeRequest request);
 
     void updateAttribute(Long id, UpdateAttributeRequest request);
-
-
 }

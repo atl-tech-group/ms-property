@@ -1,10 +1,17 @@
 package com.msproperty.controller;
 
+import com.msproperty.dao.entity.PropertyEntity;
+import com.msproperty.model.criteria.PageCriteria;
+import com.msproperty.model.criteria.UserCriteria;
 import com.msproperty.model.request.SavePropertyRequest;
 import com.msproperty.model.response.PropertyResponse;
 import com.msproperty.service.serviceImpl.PropertyServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/api/v1/property")
@@ -15,6 +22,11 @@ public class PropertyController {
     @GetMapping("/{id}")
     public PropertyResponse getPropertyById(@PathVariable Long id) {
         return propertyService.getPropertyById(id);
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<Page<PropertyEntity>> getAllProducts(PageCriteria pageCriteria, UserCriteria userCriteria) {
+        return ResponseEntity.status(OK).body(propertyService.getAllProducts(pageCriteria, userCriteria));
     }
 
     @PostMapping

@@ -6,10 +6,12 @@ import com.msproperty.model.request.SaveLocationRequest;
 import com.msproperty.model.request.UpdateLocationRequest;
 import com.msproperty.model.response.LocationResponse;
 import com.msproperty.service.LocationService;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import static com.msproperty.mapper.LocationMapper.LOCATION_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.LOCATION_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +39,7 @@ public class LocationServiceImpl implements LocationService {
 
     private LocationEntity fetchLocationEntityIfExist(Long id) {
         return locationRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("COUNTRY_NOT_FOUND")
+                () -> new NotFoundException(LOCATION_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

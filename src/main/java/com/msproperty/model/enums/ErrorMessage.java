@@ -1,4 +1,4 @@
-package com.msproperty.model.Enum;
+package com.msproperty.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

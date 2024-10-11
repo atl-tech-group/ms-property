@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("api/v1/property-type")
+@RequestMapping("/api/v1/property-type")
 @RequiredArgsConstructor
 public class PropertyTypeController {
     private final PropertyTypeService propertyService;

@@ -6,10 +6,12 @@ import com.msproperty.model.request.SavePropertyTypeRequest;
 import com.msproperty.model.request.UpdatePropertyTypeRequest;
 import com.msproperty.model.response.PropertyTypeResponse;
 import com.msproperty.service.PropertyTypeService;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import static com.msproperty.mapper.PropertyTypeMapper.PROPERTY_TYPE_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.PROPERTY_TYPE_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +40,7 @@ public class PropertyTypeServiceImpl implements PropertyTypeService {
 
     private PropertyTypeEntity fetchPropertyTypeEntityIfExist(Long id) {
         return propertyTypeRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("PROPERTY_TYPE_NOT_FOUND")
+                () -> new NotFoundException(PROPERTY_TYPE_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

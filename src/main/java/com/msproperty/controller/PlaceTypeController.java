@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("api/v1/place-type")
+@RequestMapping("/api/v1/place-type")
 @RequiredArgsConstructor
 public class PlaceTypeController {
     private final PlaceTypeService placeTypeService;

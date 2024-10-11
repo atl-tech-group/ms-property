@@ -1,12 +1,8 @@
 package com.msproperty.controller;
 
-import com.msproperty.model.request.SaveAttributeCategoryRequest;
 import com.msproperty.model.request.SaveAttributeRequest;
-import com.msproperty.model.request.UpdateAttributeCategoryRequest;
 import com.msproperty.model.request.UpdateAttributeRequest;
-import com.msproperty.model.response.AttributeCategoryResponse;
 import com.msproperty.model.response.AttributeResponse;
-import com.msproperty.service.AttributeCategoryService;
 import com.msproperty.service.AttributeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("api/v1/attribute")
+@RequestMapping("/api/v1/attribute")
 @RequiredArgsConstructor
 public class AttributeController {
     private final AttributeService attributeService;

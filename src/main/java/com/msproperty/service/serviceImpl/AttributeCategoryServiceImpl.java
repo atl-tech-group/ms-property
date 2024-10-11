@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import static com.msproperty.mapper.AttributeCategoryMapper.ATTRIBUTE_CATEGORY_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.CATEGORY_ATTRIBUTE_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +38,7 @@ public class AttributeCategoryServiceImpl implements AttributeCategoryService {
 
     private AttributeCategoryEntity fetchAttributeCategoryEntityIfExist(Long id) {
         return attributeCategoryRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("CATEGORY_ATTRIBUTE_NOT_FOUND")
+                () -> new RuntimeException(CATEGORY_ATTRIBUTE_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

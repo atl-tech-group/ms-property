@@ -1,12 +1,8 @@
 package com.msproperty.controller;
 
-import com.msproperty.model.request.SaveCategoryRequest;
 import com.msproperty.model.request.SaveRegionRequest;
-import com.msproperty.model.request.UpdateCategoryRequest;
 import com.msproperty.model.request.UpdateRegionRequest;
-import com.msproperty.model.response.CategoryResponse;
 import com.msproperty.model.response.RegionResponse;
-import com.msproperty.service.CategoryService;
 import com.msproperty.service.RegionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("api/v1/region")
+@RequestMapping("/api/v1/region")
 @RequiredArgsConstructor
 public class RegionController {
     private final RegionService regionService;

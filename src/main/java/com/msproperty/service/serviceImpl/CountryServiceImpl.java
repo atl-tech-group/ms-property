@@ -6,10 +6,12 @@ import com.msproperty.model.request.SaveCountryRequest;
 import com.msproperty.model.request.UpdateCountryRequest;
 import com.msproperty.model.response.CountryResponse;
 import com.msproperty.service.CountryService;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import static com.msproperty.mapper.CountryMapper.COUNTRY_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.COUNTRY_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +39,7 @@ public class CountryServiceImpl implements CountryService {
 
     private CountryEntity fetchCountryEntityIfExist(Long id) {
         return countryRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("COUNTRY_NOT_FOUND")
+                () -> new NotFoundException(COUNTRY_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

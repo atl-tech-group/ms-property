@@ -1,17 +1,17 @@
 package com.msproperty.service.serviceImpl;
 
-import com.msproperty.dao.entity.AttributeEntity;
 import com.msproperty.dao.entity.RegionEntity;
 import com.msproperty.dao.repository.RegionRepository;
 import com.msproperty.model.request.SaveRegionRequest;
 import com.msproperty.model.request.UpdateRegionRequest;
 import com.msproperty.model.response.RegionResponse;
 import com.msproperty.service.RegionService;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static com.msproperty.mapper.AttributeMapper.ATTRIBUTE_MAPPER;
 import static com.msproperty.mapper.RegionMapper.REGION_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.REGION_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -39,7 +39,7 @@ public class RegionServiceImpl implements RegionService {
 
     private RegionEntity fetchRegionEntityIfExist(Long id) {
         return regionRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("REGION_NOT_FOUND")
+                () -> new NotFoundException(REGION_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

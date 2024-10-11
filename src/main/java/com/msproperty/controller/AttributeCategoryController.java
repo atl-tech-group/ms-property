@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("api/v1/attribute-category")
+@RequestMapping("/api/v1/attribute-category")
 @RequiredArgsConstructor
 public class AttributeCategoryController {
     private final AttributeCategoryService attributeCategoryService;

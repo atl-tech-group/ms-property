@@ -6,10 +6,12 @@ import com.msproperty.model.request.SavePlaceTypeRequest;
 import com.msproperty.model.request.UpdatePlaceTypeRequest;
 import com.msproperty.model.response.PlaceTypeResponse;
 import com.msproperty.service.PlaceTypeService;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import static com.msproperty.mapper.PlaceTypeMapper.PLACE_TYPE_MAPPER;
+import static com.msproperty.model.enums.ErrorMessage.PLACE_TYPE_NOT_FOUND_BY_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +39,7 @@ public class PlaceTypeServiceImpl implements PlaceTypeService {
 
     private PlaceTypeEntity fetchPlaceTypeEntityIfExist(Long id) {
         return placeTypeRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("PLACE_TYPE_NOT_FOUND")
+                () -> new NotFoundException(PLACE_TYPE_NOT_FOUND_BY_ID.format(id))
         );
     }
 }

@@ -1,4 +1,4 @@
-package atl.classroom.task.crud.utils;
+package com.msproperty.utility;
 
 
 import jakarta.persistence.criteria.Predicate;
@@ -17,7 +17,7 @@ public class PredicateUtil {
     }
 
     public static String applyLikePattern(String key) {
-        return "%" + key + "%";
+        return "%" + key.toLowerCase() + "%";
     }
 
     public <T> PredicateUtil addNullSafety(T object, Function<T, Predicate> function) {

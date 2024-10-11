@@ -1,5 +1,6 @@
 package com.msproperty.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -41,16 +42,19 @@ public class PropertyEntity {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     @ToString.Exclude
+    @JsonBackReference // Prevent recursion
     LocationEntity location;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "place_type_id", referencedColumnName = "id")
     @ToString.Exclude
+    @JsonBackReference // Prevent recursion
     PlaceTypeEntity placeType;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "property_type_id", referencedColumnName = "id")
     @ToString.Exclude
+    @JsonBackReference // Prevent recursion
     PropertyTypeEntity propertyType;
 
     @ManyToMany(cascade = ALL)
@@ -60,6 +64,7 @@ public class PropertyEntity {
             inverseJoinColumns = @JoinColumn(name = "attribute_id")
     )
     @ToString.Exclude
+    @JsonBackReference // Prevent recursion
     private List<AttributeEntity> attributes;
 
     @ManyToMany(cascade = ALL)
@@ -69,5 +74,6 @@ public class PropertyEntity {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     @ToString.Exclude
+    @JsonBackReference // Prevent recursion
     private List<CategoryEntity> categories;
 }
