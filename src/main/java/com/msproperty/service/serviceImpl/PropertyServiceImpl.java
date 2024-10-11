@@ -1,11 +1,15 @@
 package com.msproperty.service.serviceImpl;
 
+<<<<<<< HEAD
 import com.msproperty.dao.entity.PropertyEntity;
+=======
+>>>>>>> 83a6d4de51cc4b5342834046a5c8bf0274360638
 import com.msproperty.dao.repository.PropertyRepository;
 import com.msproperty.model.criteria.PageCriteria;
 import com.msproperty.model.criteria.UserCriteria;
 import com.msproperty.model.request.SavePropertyRequest;
 import com.msproperty.model.response.PropertyResponse;
+import com.msproperty.model.response.PropertyResponseFein;
 import com.msproperty.service.AttributeService;
 import com.msproperty.service.CategoryService;
 import com.msproperty.service.PropertyService;
@@ -39,6 +43,7 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
+<<<<<<< HEAD
     public Page<PropertyEntity> getAllProducts(PageCriteria pageCriteria, UserCriteria userCriteria) {
 
         var users = propertyRepository.findAll(new UserSpecification(userCriteria),
@@ -47,6 +52,18 @@ public class PropertyServiceImpl implements PropertyService {
         return users;
     }
 
+=======
+    public PropertyResponseFein getForFeinPropertyById(Long id) {
+        var propertyId = propertyRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Property not found By " + id + "id"));
+
+        return new PropertyResponseFein(
+                propertyId.getId()
+        );
+    }
+
+
+>>>>>>> 83a6d4de51cc4b5342834046a5c8bf0274360638
     @Override
     @Transactional
     public void saveProperty(SavePropertyRequest request) {
