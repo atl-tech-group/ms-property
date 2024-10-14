@@ -25,15 +25,14 @@ public class PropertyController {
         return propertyService.getPropertyById(id);
     }
 
-<<<<<<< HEAD
     @PostMapping("/search")
     public ResponseEntity<Page<PropertyEntity>> getAllProducts(PageCriteria pageCriteria, UserCriteria userCriteria) {
         return ResponseEntity.status(OK).body(propertyService.getAllProducts(pageCriteria, userCriteria));
-=======
+    }
+
     @GetMapping("/fein/{id}")
     public PropertyResponseFein getForFeinPropertyById(@PathVariable Long id) {
         return propertyService.getForFeinPropertyById(id);
->>>>>>> 83a6d4de51cc4b5342834046a5c8bf0274360638
     }
 
     @PostMapping
