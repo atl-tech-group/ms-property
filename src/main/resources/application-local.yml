@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/propertydb
+    username: pass
+    password: 1212
+  jpa:
+    show_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: validate
+  #    open-in-view: true
+  # Liquibase
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yaml
+
+# Server
+server:
+  port: 9093
+
+# Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
