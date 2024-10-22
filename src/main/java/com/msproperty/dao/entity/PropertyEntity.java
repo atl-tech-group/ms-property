@@ -39,6 +39,10 @@ public class PropertyEntity {
     String address_line_1;
     String address_line_2;
 
+    @Version
+    @Column(name = "version", nullable = false)
+    private Long version;
+
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     @ToString.Exclude

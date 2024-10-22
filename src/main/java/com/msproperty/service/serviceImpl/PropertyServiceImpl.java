@@ -12,11 +12,14 @@ import com.msproperty.service.CategoryService;
 import com.msproperty.service.PropertyService;
 import com.msproperty.service.specification.UserSpecification;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.LockModeType;
 import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.msproperty.mapper.PropertyMapper.PROPERTY_MAPPER;
@@ -49,6 +52,7 @@ public class PropertyServiceImpl implements PropertyService {
         return users;
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE, timeout = 30)
     public PropertyResponseFein getForFeinPropertyById(Long id) {
         var propertyId = propertyRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Property not found By " + id + "id"));
